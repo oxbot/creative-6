@@ -14,9 +14,15 @@
   };
   firebase.initializeApp(config);
 </script>
-
-
-
+<script>
+function signOut = new function() {
+	firebase.auth().signOut().then(function() {
+	  // Sign-out successful.
+	}, function(error) {
+	  // An error happened.
+	});
+}
+</script>
 <script type="text/javascript">
       initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
