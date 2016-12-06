@@ -15,16 +15,22 @@
   firebase.initializeApp(config);
 </script>
 <script>
-function signOut = new function() {
+ signOut =  function() {
+	firebase.auth().onAuthStateChanged(function(user) {
 	firebase.auth().signOut().then(function() {
 	  // Sign-out successful.
 	}, function(error) {
 	  // An error happened.
 	});
+	console.log("User logged in")
+	})
+	console.log("Pressed after signOut")
 }
 </script>
 <script type="text/javascript">
       initApp = function() {
+	document.getElementById("sign-in").addEventListener("click", signOut);
+
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
@@ -61,12 +67,19 @@ function signOut = new function() {
       window.addEventListener('load', function() {
         initApp()
       });
+
     </script>
   </head>
   <body>
     <h1>Welcome to My Awesome App</h1>
     <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
+    <button id="sign-in"></button>
+	<div id="account-details">
+		<img id="photo" src=""></img>
+		<h3 id="name"></h3>
+		<span id="email"></span>
+
+
+	</div>
   </body>
 </html>
