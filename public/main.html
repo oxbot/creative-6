@@ -22,9 +22,8 @@
 	}, function(error) {
 	  // An error happened.
 	});
-	console.log("User logged in")
+	window.location="/";
 	})
-	console.log("Pressed after signOut")
 }
 </script>
 <script type="text/javascript">
@@ -43,15 +42,9 @@
             user.getToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
               document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
+		document.getElementById('photo').src = photoURL;
+		document.getElementById('name').textContent = displayName;
+		document.getElementById('email').textContent = email;
             });
           } else {
             // User is signed out.
